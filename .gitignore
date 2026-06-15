@@ -1,0 +1,2 @@
+# Ignore oversized documentation video files
+client/docs/**/*.mp4
