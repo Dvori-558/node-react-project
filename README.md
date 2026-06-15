@@ -80,7 +80,6 @@ node server.js
 
 	![Login Demo](client/docs/images/demo-login.gif)
 
-אם תרצי להוסיף GIF נוספים (למשל Product או Cart), צרי/י אותם ב־`client/docs/images/` ואז עדכני את ה־README בהתאם.
 
 ### צילומי מסך
 
@@ -105,27 +104,6 @@ node server.js
 ![הוספת מוצר](client/docs/images/add-product.png)
 ![עמוד מוצר בודד](client/docs/images/signle.png)
 
-## איך להכין GIF קצר
-
-אם יש לך קובץ וידאו (MP4), ניתן להמיר אותו ל־GIF קטן באמצעות `ffmpeg` ואז לדחוס עם `gifsicle`:
-
-```bash
-# 1) לחתוך ולהקטין את הווידאו (למשל 5-8 שניות):
-ffmpeg -i input.mp4 -ss 00:00:05 -t 8 -vf "scale=640:-1" -r 12 trimmed.mp4
-
-# 2) להמיר ל־GIF (אפשר להוסיף פלטפורמת צבעים להתאמה):
-ffmpeg -i trimmed.mp4 -vf "fps=12,scale=640:-1:flags=lanczos" -y temp.gif
-
-# 3) לדחוס את ה‑GIF (אם מותקן gifsicle):
-gifsicle -O3 temp.gif -o client/docs/images/demo.gif
-
-# תחליפי את הנתיבים לפי הצורך
-```
-
-טיפים:
-- הורידי את הרזולוציה ל־640px רוחב או פחות.
-- הורידי את ה־FPS ל־10–12 כדי להקטין את הגודל.
-- אם הווידאו ארוך, חותך אותו ל־5–8 שניות.
 
 ## תרומה ויצירת קשר
 
