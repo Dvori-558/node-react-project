@@ -19,7 +19,7 @@ const SingleProd = ({ id, addToBasket }) => {
     fetchData()
   }, [])
 
-  if (!product) return <h1>Loading...</h1>
+  if (!product) return <h1>טוען...</h1>
   const footer = (
     <>
       <div className="flex justify-content-between align-content-end	">

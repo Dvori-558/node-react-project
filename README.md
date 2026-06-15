@@ -15,7 +15,7 @@
 ## תיעוד חזותי
 הנכסים נמצאים ב־`client/docs/`:
 - תמונות: `client/docs/images/`
-- סרטון הדגמה: `client/docs/videw.mp4`
+> הערה: קובץ הווידאו המקורי גדול מדי ל־GitHub ולכן אינו כלול בריפוזיטורי.
 
 ### צילומי מסך
 #### עמוד הבית
@@ -39,8 +39,6 @@
 ![הוספת מוצר](client/docs/images/add-product.png)
 ![עמוד מוצר בודד](client/docs/images/signle.png)
 
-### סרטון הדגמה
-[צפייה בסרטון ההדגמה](client/docs/videw.mp4)
 
 ## התקנה והרצה
 ```bash
@@ -56,10 +54,5 @@ npm start
   - `client/src/` — קוד React
   - `client/src/components/` — רכיבים מרכזיים
   - `client/public/` — קבצים סטטיים של הלקוח
-  - `client/docs/` — תמונות וסרטון תיעוד
+    - `client/docs/` — תמונות תיעוד
 - `server/` — קוד השרת
-
-## עקרונות תמיכה ושיפור
-- תמונות ב־`client/docs/images/` מיועדות ל־README ולתיעוד.
-- אם תרצי להשתמש בתמונות בתוך האפליקציה, עדיף לשים אותן ב־`client/public/images/`.
-- הנתיבים ב־React נשארו באנגלית, אך הממשק מוצג בעברית.

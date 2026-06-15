@@ -1,4 +1,4 @@
-import { Link, NavLink, Outlet, useNavigate } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
 import React, { useRef, useState } from 'react';
 import { Toolbar } from 'primereact/toolbar';
 import { OverlayPanel } from 'primereact/overlaypanel';
@@ -10,7 +10,7 @@ import { clearToken } from "../store/tokenSlice";
 
 
 const Header = () => {
-  const [visible, setVisible] = useState(true);
+  
   const dispatch = useDispatch()
 
   const op = useRef(null);
@@ -29,36 +29,35 @@ const Header = () => {
        <OverlayPanel ref={op}>
         <Basket />
       </OverlayPanel>:<></>}
-      {!token&&<Link to="register" setVisible={setVisible} visible={visible} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+      {!token&&<Link to="register" className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
         <i className="pi pi-user-plus text-2xl"></i>
       </Link>}
-      {!token&&<Link to="login" setVisible={setVisible} visible={visible} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+      {!token&&<Link to="login" className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
         <i className="pi pi-user text-2xl"></i>
       </Link>}
       {token&&<button onClick={()=>{dispatch(clearToken());navigate("/")}} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
         <i className="pi pi-sign-out text-2xl "></i>
       </button>}
       <Button  onClick={(e) => {
-        op.current?.toggle(e); !op.current && message.current.show({ severity: "error", summary: 'Error', detail: 'Please Login', life: 3000 })
+        op.current?.toggle(e); !op.current && message.current.show({ severity: "error", summary: 'שגיאה', detail: 'אנא התחבר/י', life: 3000 })
       }} className="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
         <i className="pi pi-shopping-cart text-2xl"></i>
       </Button >
     </div>
   );
 
-  const centerContent = (<div style={{ display: "flex", flexDirection: "column" }}>
-    <NavLink>
-      {role==="Admin"&&<Link to={"edit"} className="p-button font-bold bg-indig-900	mr-3">ניהול מוצרים</Link>}
-      <Link to={"category/windInstrument"} className="p-button font-bold bg-indigo-300	mr-3">כלי נשיפה</Link>
-      <Link to={"category/guitars"} className="p-button font-bold bg-indigo-300	mr-3">גיטרות</Link>
-      <Link to={"category/pianos"} className="p-button font-bold bg-indigo-300	mr-3">קלידים</Link>
-      <Link to={"category/drums"} className="p-button font-bold bg-indigo-300	mr-3">תופים</Link>
-      <Link to={"category/bow"} className="p-button font-bold bg-indigo-300	mr-3">כלי מיתר</Link>
-      <Link to={"category/all"} className="p-button font-bold bg-indigo-300	mr-3">כל המוצרים</Link>
-    </NavLink>
-
-  </div>
-
+  const centerContent = (
+    <div style={{ display: "flex", flexDirection: "row", alignItems: "center" }}>
+      <div className="flex align-items-center gap-3">
+        {role==="Admin"&&<Link to={"edit"} className="p-button font-bold text-white mr-3" style={{ backgroundColor: '#2d3748', border: '1px solid rgba(255,255,255,0.2)' }}>ניהול מוצרים</Link>}
+        <Link to={"category/windInstrument"} className="p-button font-bold bg-indigo-300 mr-3">כלי נשיפה</Link>
+        <Link to={"category/guitars"} className="p-button font-bold bg-indigo-300 mr-3">גיטרות</Link>
+        <Link to={"category/pianos"} className="p-button font-bold bg-indigo-300 mr-3">קלידים</Link>
+        <Link to={"category/drums"} className="p-button font-bold bg-indigo-300 mr-3">תופים</Link>
+        <Link to={"category/bow"} className="p-button font-bold bg-indigo-300 mr-3">כלי מיתר</Link>
+        <Link to={"category/all"} className="p-button font-bold bg-indigo-300 mr-3">כל המוצרים</Link>
+      </div>
+    </div>
   );
 
   const endContent = (

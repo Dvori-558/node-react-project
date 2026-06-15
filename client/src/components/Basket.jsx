@@ -85,12 +85,12 @@ const Basket = () => {
 
   return (
     <>
-      <h1>Total sum: {totalSum}</h1>
+      <h1>סכום כולל: ₪{totalSum}</h1>
       <Toast ref={message} position='top-center' />
 
       <div className="card" style={{}}>
-        <DataScroller value={products} itemTemplate={itemTemplate} rows={5} inline scrollHeight="500px" header="Shopping Cart" />
-        <h2>כאן מופיעים כל המוצרים שכרגע נמצאים בעגלת הקניות שלכם</h2>
+        <DataScroller value={products} itemTemplate={itemTemplate} rows={5} inline scrollHeight="500px" header="עגלת קניות" />
+        <h2>כאן מופיעים כל המוצרים שכרגע נמצאים בעגלת הקניות שלך</h2>
       </div>
     </>
   )

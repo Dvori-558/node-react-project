@@ -23,13 +23,23 @@ const ProdByCategory = () => {
   const token = useSelector(store => store.tokenSlice.token)
   const { name } = useParams()
 
+  const categoryMap = {
+    "כלי-נשיפה": "windInstrument",
+    "גיטרות": "guitars",
+    "קלידים": "pianos",
+    "תופים": "drums",
+    "כלי-מיתר": "bow",
+    "כל": "all",
+  }
+
   const fetchData = async () => {
-    if (name === "all") {
+    const apiCategory = categoryMap[name] ?? name
+    if (apiCategory === "all") {
       const { data } = await Axios.get(`http://localhost:1234/api/products`, { headers: { "Authorization": `Bearer ${token}` } })
       setProducts(data)
     }
     else {
-      const { data } = await Axios.get(`http://localhost:1234/api/products/category/${name}`, { headers: { "Authorization": `Bearer ${token}` } })
+      const { data } = await Axios.get(`http://localhost:1234/api/products/category/${apiCategory}`, { headers: { "Authorization": `Bearer ${token}` } })
       setProducts(data)
     }
   }
@@ -50,9 +60,9 @@ const ProdByCategory = () => {
         const newQty = { id: exist.data[0]._id, quentity: exist.data[0].quentity + 1 }
         const add = await Axios.put("http://localhost:1234/api/basket/updateQty", newQty, { headers: { "Authorization": `Bearer ${token}` } })
       }
-      message.current.show({ severity: "success", summary: 'Success', detail: 'Product added to cart', life: 3000 })
+      message.current.show({ severity: "success", summary: 'הצלחה', detail: 'המוצר נוסף לעגלה', life: 3000 })
     } catch (error) {
-      message.current.show({ severity: "error", summary: 'Error', detail: 'Please Login', life: 3000 })
+      message.current.show({ severity: "error", summary: 'שגיאה', detail: 'אנא התחבר/י', life: 3000 })
 
     }
 
@@ -82,7 +92,7 @@ const ProdByCategory = () => {
               <span className="text-2xl font-semibold">₪{product.price}</span>
 
               <Button onClick={() => addToBasket(product._id)} icon="pi pi-shopping-cart" className="p-button-rounded" disabled={product.inventoryStatus === 'OUTOFSTOCK'}></Button>
-              <Button label="Show" icon="pi pi-external-link" className="bg-indigo-300 text-indigo-300" onClick={(e) => { setVisible(true); setSelected(product._id); }} />
+              <Button label="הצג" icon="pi pi-external-link" className="bg-indigo-300 text-indigo-300" onClick={(e) => { setVisible(true); setSelected(product._id); }} />
             </div>
           </div>
         </div>
@@ -107,7 +117,7 @@ const ProdByCategory = () => {
           <div className="flex align-items-center justify-content-between">
             <span className="text-2xl font-semibold">₪{product.price}</span>
 
-            <Button label="Show" icon="pi pi-external-link" className="bg-indigo-300 text-indigo-300" onClick={(e) => { setVisible(true); setSelected(product._id); }} />
+            <Button label="הצג" icon="pi pi-external-link" className="bg-indigo-300 text-indigo-300" onClick={(e) => { setVisible(true); setSelected(product._id); }} />
             {selected === product._id &&
               <Dialog className="card" style={{ border: "solid 5px var(--indigo-300)", width: '50vw' }} visible={visible} onHide={() => { if (!visible) return; setVisible(false); }}>
                 <SingleProd id={product._id} addToBasket={addToBasket} />
@@ -141,8 +151,8 @@ const ProdByCategory = () => {
   };
   const footer = (
     <>
-      <Button label="Save" icon="pi pi-check" />
-      <Button label="Cancel" severity="secondary" icon="pi pi-times" style={{ marginLeft: '0.5em' }} />
+      <Button label="שמור" icon="pi pi-check" />
+      <Button label="ביטול" severity="secondary" icon="pi pi-times" style={{ marginLeft: '0.5em' }} />
     </>
   );
 
