@@ -1,41 +1,46 @@
-﻿# Yag Project Client
+﻿# Yag Project
 
-ריפוזיטורי ה־`client` של פרויקט יג — חנות מקוונת בעברית עם ממשק React, PrimeReact ו־Redux.
+חנות אונליין מבוססת React + Node, עם ממשק משתמש בעברית וניהול מוצרים למנהל.
 
-## מה יש כאן
+## מה כולל הפרויקט
 - דף הבית של החנות
 - חיפוש מוצר
-- קטגוריות נבחרות
+- קטגוריות
 - דף מוצר בודד
 - סל קניות
 - כניסה / הרשמה
 - דף ניהול מוצרים למנהל
+- אימות JWT ונתונים ב־MongoDB
 
-## תמונות וסרטון תצוגה
-כל הצילומים נמצאים ב־`client/docs/images/`, והווידאו ב־`client/docs/videw.mp4`.
+## תיעוד חזותי
+הנכסים קיימים ב־`client/docs/`:
+- תמונות: `client/docs/images/`
+- סרטון הדגמה: `client/docs/videw.mp4`
 
 ### צילומי מסך
+#### בית
 ![דף הבית 1](client/docs/images/home1.png)
 ![דף הבית 2](client/docs/images/home2.png)
 
+#### חיפוש וקטגוריות
 ![חיפוש מוצר](client/docs/images/search.png)
 ![קטגוריות](client/docs/images/category.png)
 
+#### כניסה ורישום
 ![כניסה](client/docs/images/login.png)
 ![רישום](client/docs/images/register.png)
 
+#### סל קניות
 ![סל קניות 1](client/docs/images/basket1.png)
 ![סל קניות 2](client/docs/images/basket2.png)
 
+#### ניהול מוצרים ומוצר בודד
 ![ניהול מוצרים](client/docs/images/edit.png)
 ![הוספת מוצר](client/docs/images/add-product.png)
-
 ![עמוד מוצר בודד](client/docs/images/signle.png)
 
-### וידאו תצוגה
-<video controls width="720" src="client/docs/videw.mp4">
-  סרטון ההדגמה אינו נתמך על ידי דפדפן זה.
-</video>
+### סרטון הדגמה
+[צפייה בסרטון ההדגמה](client/docs/videw.mp4)
 
 ## התקנה והרצה
 ```bash
@@ -46,20 +51,18 @@ npm start
 
 היישום יפעל ב־`http://localhost:3000`.
 
-## מבנה קבצים חשוב
-- `client/src/` — קוד React של הלקוח
-- `client/src/components/` — רכיבים מרכזיים
-- `client/public/` — קבצים סטטיים של הלקוח
-- `client/docs/images/` — צילומי מסך לתיעוד
-- `client/docs/videw.mp4` — סרטון הדגמה
+## מבנה הפרויקט
+- `client/` — קוד הלקוח
+  - `client/src/` — קוד React
+  - `client/src/components/` — רכיבים מרכזיים
+  - `client/public/` — קבצים סטטיים של הלקוח
+  - `client/docs/` — תמונות וסרטון תיעוד
+- `server/` — קוד השרת
 
-## שים לב
-- התמונות ב־`client/docs/images/` מיועדות לתיעוד ול־README.
-- אם את רוצה תמונות שישמשו בתוך האפליקציה עצמה, עדיף לשים אותן ב־`client/public/images/`.
-- הקישורים ב־React נשארו באנגלית, אך הממשק מציג עברית.
+## עקרונות תמיכה ושיפור
+- התמונות ב־`client/docs/images/` מיועדות ל־README ותיעוד בלבד.
+- אם תרצי להשתמש בתמונות בתוך האפליקציה, עדיף לשים אותן ב־`client/public/images/`.
+- הנתיבים ב־React נשארו באנגלית, אך הממשק מוצג בעברית.
 
-## למה זה יפה ומקצועי
-- מציג את האפליקציה באופן חזותי וקריא
-- מחלק דפי מסך לפי קטעים ברורים
-- כולל סרטון הדגמה מקומי
-- מראה איפה לשים נכסים ואיך להריץ
+## הערה חשובה
+אני גם מעדכן את Git כדי לתמוך בתמונות האלה: `client/docs/` יתווסף למעקב.
